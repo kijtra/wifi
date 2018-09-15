@@ -19,6 +19,12 @@ class SpotController extends Controller
 
         if ($val = $request->input('l')) {
             $query->limit($val);
+        } else {
+            $query->limit(300);
+        }
+
+        if ($request->has('official')) {
+            $query->official(($request->input('official')));
         }
 
         if ($val = $request->input('q')) {
@@ -36,7 +42,7 @@ class SpotController extends Controller
         if ($val = $request->input('lang')) {
             $query->lang($val);
         }
-// dd($query->toSql(),$query->getBindings());
+
         if (($ne = $request->input('ne')) && ($sw = $request->input('sw'))) {
             if (
                 preg_match('/\A\-?\d{2}\.\d+,\-?\d{3}\.\d+\z/', $ne)
@@ -66,6 +72,8 @@ class SpotController extends Controller
                 ->orderBy('_distance', 'asc');
             }
         }
+
+        // dd($query->toSql(),$query->getBindings());
 
         return SpotResource::collection($query->get());
     }

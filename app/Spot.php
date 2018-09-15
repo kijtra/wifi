@@ -148,6 +148,11 @@ class Spot extends Model
         return $query;
     }
 
+    public function scopeOfficial($query, $flag = true)
+    {
+        return $query->where('is_official', '=', (int) $flag);
+    }
+
     protected static function getLang(): string
     {
         static $lang;
