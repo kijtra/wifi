@@ -1,11 +1,4 @@
 @php
-$config = [
-    'appName' => config('app.name'),
-    'locale' => $locale = app()->getLocale(),
-    'locales' => config('app.locales'),
-    'githubAuth' => config('services.github.client_id'),
-];
-
 $polyfills = [
     'Promise',
     'Object.assign',
@@ -32,7 +25,7 @@ $polyfills = [
   <div id="app"></div>
 
   {{-- Global configuration object --}}
-  <script>window.config = @json($config);</script>
+  <script>window.config=@json(config('javascript'));</script>
 
   {{-- Polyfill JS features via polyfill.io --}}
   <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features={{ implode(',', $polyfills) }}"></script>
