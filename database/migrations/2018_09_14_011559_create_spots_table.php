@@ -15,6 +15,7 @@ class CreateSpotsTable extends Migration
     {
         Schema::create('spots', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->boolean('is_official')->default('0');
             $table->string('source_id', 191)->nullable();
             $table->string('name_ja', 191)->nullable()->comment('スポット名（日本語）');
             $table->string('name_en', 191)->nullable()->comment('スポット名（英語）');
@@ -43,6 +44,7 @@ class CreateSpotsTable extends Migration
             $table->timestamps();
 
             $table->unique('source_id');
+            $table->index('is_official');
             $table->index('prefecture_ja');
             $table->spatialIndex('point');
         });

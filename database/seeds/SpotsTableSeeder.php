@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class SourcesTableSeeder extends Seeder
+class SpotsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,6 +11,6 @@ class SourcesTableSeeder extends Seeder
      */
     public function run()
     {
-        \Artisan::call('spot:import');
+        \Artisan::call('spot:convert');
     }
 }
