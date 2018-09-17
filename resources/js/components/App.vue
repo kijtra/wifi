@@ -2,38 +2,38 @@
   <div id="app">
     <loading ref="loading"/>
 
+
+    <navbar></navbar>
+    <sidebar></sidebar>
+
+      <div class="footer-sidebar" slot="footer">
+        <vs-button vs-icon="reply" vs-color="danger" vs-type="flat">log out</vs-button>
+        <vs-button vs-icon="settings" vs-color="primary" vs-type="border"></vs-button>
+      </div>
+
+    </vs-sidebar>
+
     <transition name="page" mode="out-in">
-      <component v-if="layout" :is="layout"/>
+      <slot>
+        <router-view/>
+      </slot>
     </transition>
   </div>
 </template>
 
 <script>
 import Loading from './Loading'
-
-// Load layout components dynamically.
-const requireContext = require.context('~/layouts', false, /.*\.vue$/)
-
-const layouts = requireContext.keys()
-  .map(file =>
-    [file.replace(/(^.\/)|(\.vue$)/g, ''), requireContext(file)]
-  )
-  .reduce((components, [name, component]) => {
-    components[name] = component.default || component
-    return components
-  }, {})
+import Navbar from './Navbar'
+import Sidebar from './Sidebar'
 
 export default {
   el: '#app',
 
   components: {
-    Loading
+    Loading,
+    Navbar,
+    Sidebar
   },
-
-  data: () => ({
-    layout: null,
-    defaultLayout: 'default'
-  }),
 
   metaInfo () {
     const { appName } = window.config
@@ -47,20 +47,5 @@ export default {
   mounted () {
     this.$loading = this.$refs.loading
   },
-
-  methods: {
-    /**
-     * Set the application layout.
-     *
-     * @param {String} layout
-     */
-    setLayout (layout) {
-      if (!layout || !layouts[layout]) {
-        layout = this.defaultLayout
-      }
-
-      this.layout = layouts[layout]
-    }
-  }
 }
 </script>

@@ -1,3 +1,5 @@
+export const SIDEBAR_TOGGLE = 'SIDEBAR_TOGGLE'
+
 // auth.js
 export const LOGOUT = 'LOGOUT'
 export const SAVE_TOKEN = 'SAVE_TOKEN'
