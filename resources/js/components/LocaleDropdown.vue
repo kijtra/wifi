@@ -43,7 +43,6 @@ export default {
         text: this.locales[key],
       })
     })
-    console.log(this.langs,this.locales);
   },
 
   methods: {
