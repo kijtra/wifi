@@ -5,6 +5,7 @@
   <navbar />
   <v-content>
     <router-view></router-view>
+  {{$t("message.hello")}}
   </v-content>
 </v-app>
 </template>
