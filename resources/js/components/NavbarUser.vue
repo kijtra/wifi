@@ -4,10 +4,7 @@
   :close-on-content-click="false"
   offset-x
 >
-  <v-btn
-    slot="activator"
-    icon
-  >
+  <v-btn slot="activator" icon>
     <v-avatar v-if="user" size="36px">
       <img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="John">
     </v-avatar>
@@ -30,7 +27,7 @@
     <v-divider></v-divider>
 
     <v-list>
-      <v-list-tile avatar @click="logOut()">
+      <v-list-tile avatar @click="logout()">
         <v-list-tile-avatar>
           <v-icon>exit_to_app</v-icon>
         </v-list-tile-avatar>
@@ -64,8 +61,12 @@ export default {
   }),
 
   methods: {
-    logOut() {
+    async logout () {
+      // Log out the user.
+      await this.$store.dispatch('auth/logout')
 
+      // Redirect to login.
+      this.$router.push({ name: 'login' })
     }
   }
 }

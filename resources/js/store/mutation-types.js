@@ -9,4 +9,5 @@ export const FETCH_USER_FAILURE = 'FETCH_USER_FAILURE'
 export const UPDATE_USER = 'UPDATE_USER'
 
 // lang.js
+export const SET_APP_NAME = 'SET_APP_NAME'
 export const SET_LOCALE = 'SET_LOCALE'

@@ -2,7 +2,7 @@
   <v-select
     :items="langs"
     v-model="lang"
-    :label="$t('Language')"
+    :label="$t('languages')"
     prepend-icon="translate"
     single-line
   ></v-select>
@@ -23,8 +23,8 @@ export default {
   },
 
   computed: mapGetters({
-    locale: 'lang/locale',
-    locales: 'lang/locales'
+    locale: 'global/locale',
+    locales: 'global/locales'
   }),
 
   watch: {
@@ -48,9 +48,8 @@ export default {
   methods: {
     setLocale (locale) {
       if (this.$i18n.locale !== locale) {
+        this.$store.dispatch('global/setLocale', { locale })
         loadMessages(locale)
-
-        this.$store.dispatch('lang/setLocale', { locale })
       }
     }
   }

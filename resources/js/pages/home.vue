@@ -1,6 +1,7 @@
 <template>
 <div>
     map
+    {{$t('message.home')}}
 </div>
 </template>
 
@@ -10,16 +11,10 @@ import { mapGetters } from 'vuex'
 export default {
 
   metaInfo () {
-    const appName = this.$t('app_name')
-
     return {
-      title: appName,
+      title: this.$t('message.home'),
     }
   },
-
-  data: () => ({
-    title: window.config.appName
-  }),
 
   computed: mapGetters({
     authenticated: 'auth/check'
