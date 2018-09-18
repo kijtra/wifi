@@ -1,24 +1,12 @@
 <template>
-  <div id="app">
-    <loading ref="loading"/>
-
-
-    <navbar></navbar>
-    <sidebar></sidebar>
-
-      <div class="footer-sidebar" slot="footer">
-        <vs-button vs-icon="reply" vs-color="danger" vs-type="flat">log out</vs-button>
-        <vs-button vs-icon="settings" vs-color="primary" vs-type="border"></vs-button>
-      </div>
-
-    </vs-sidebar>
-
-    <transition name="page" mode="out-in">
-      <slot>
-        <router-view/>
-      </slot>
-    </transition>
-  </div>
+<v-app>
+  <loading ref="loading"/>
+  <sidebar />
+  <navbar />
+  <v-content>
+    <router-view></router-view>
+  </v-content>
+</v-app>
 </template>
 
 <script>
@@ -36,11 +24,17 @@ export default {
   },
 
   metaInfo () {
-    const { appName } = window.config
+    const appName = this.$t('app_name')
 
     return {
       title: appName,
-      titleTemplate: `%s · ${appName}`
+      titleTemplate (value) {
+        if (value === appName) {
+          return value
+        } else {
+          return `%s - ${appName}`
+        }
+      }
     }
   },
 

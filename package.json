@@ -29,9 +29,12 @@
         "vuex-router-sync": "^5.0.0"
     },
     "dependencies": {
+        "element-ui": "^2.4.7",
+        "keen-ui": "^1.0.1",
         "material-icons": "^0.2.3",
         "vue2-gmap-custom-marker": "^3.0.2",
         "vue2-google-maps": "^0.10.2",
-        "vuesax": "^3.3.2"
+        "vuesax": "^3.3.2",
+        "vuetify": "^1.2.3"
     }
 }
