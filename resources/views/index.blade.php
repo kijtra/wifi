@@ -1,4 +1,8 @@
 @php
+$config = config('javascript');
+$config['mapDefaultPosition'] = collect(config('geoip.default_location'))->only('lat', 'lon');
+$config['geoip'] = geoip()->getLocation()->toArray();
+
 $polyfills = [
     'Promise',
     'Object.assign',
@@ -19,20 +23,20 @@ $polyfills = [
 
   <title>{{ config('app.name') }}</title>
 
-  <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+  <link rel="stylesheet" href="{{ mix('css/app.css').(!app()->isLocal() ?: '?'.time()) }}">
 </head>
 <body>
   <div id="app"></div>
 
   {{-- Global configuration object --}}
-  <script>window.config=@json(config('javascript'));</script>
+  <script>window.config=@json($config);</script>
 
   {{-- Polyfill JS features via polyfill.io --}}
   <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features={{ implode(',', $polyfills) }}"></script>
 
   {{-- Load the application scripts --}}
   @if (app()->isLocal())
-    <script src="{{ mix('js/app.js') }}"></script>
+    <script src="{{ mix('js/app.js').(!app()->isLocal() ?: '?'.time()) }}"></script>
   @else
     <script src="{{ mix('js/manifest.js') }}"></script>
     <script src="{{ mix('js/vendor.js') }}"></script>

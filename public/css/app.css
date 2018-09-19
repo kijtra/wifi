@@ -10477,3 +10477,16 @@ a.text-dark:focus {
           box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 
+.map--wrapper {
+  height: 100%;
+  position: relative;
+}
+
+.map--canvas {
+  position: absolute !important;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+

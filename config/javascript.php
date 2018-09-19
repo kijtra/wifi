@@ -1,5 +1,4 @@
 <?php
-
 return [
     'appName' => [
         'en' => env('APP_NAME'),
