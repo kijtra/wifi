@@ -1,5 +1,6 @@
-import Cookies from 'js-cookie'
 import * as types from '../mutation-types'
+import Cookies from 'js-cookie'
+import i18n from '~/plugins/i18n'
 
 const { appName, locale, locales } = window.config
 
@@ -25,6 +26,9 @@ export const mutations = {
 
   [types.SET_LOCALE] (state, { locale }) {
     state.locale = locale
+    if (i18n.locale !== locale) {
+      i18n.locale = locale
+    }
   }
 }
 

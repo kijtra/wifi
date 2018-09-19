@@ -2,7 +2,7 @@
   <v-select
     :items="langs"
     v-model="lang"
-    :label="$t('languages')"
+    :label="$t('message.languages')"
     prepend-icon="translate"
     single-line
   ></v-select>
@@ -49,7 +49,7 @@ export default {
     setLocale (locale) {
       if (this.$i18n.locale !== locale) {
         this.$store.dispatch('global/setLocale', { locale })
-        loadMessages(locale)
+        // loadMessages(locale)
       }
     }
   }

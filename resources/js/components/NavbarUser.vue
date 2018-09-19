@@ -32,14 +32,14 @@
           <v-icon>exit_to_app</v-icon>
         </v-list-tile-avatar>
         <v-list-tile-content>
-          Log Out
+          {{ $t('message.logout') }}
         </v-list-tile-content>
       </v-list-tile>
     </v-list>
 
     <v-card-actions>
       <v-spacer></v-spacer>
-      <v-btn flat @click="menu = false">Cancel</v-btn>
+      <v-btn flat icon @click="menu=false"><v-icon>cancel</v-icon></v-btn>
     </v-card-actions>
   </v-card>
 </v-menu>

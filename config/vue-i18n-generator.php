@@ -28,6 +28,7 @@ return [
         'pagination',
         'passwords'
         */
+        'message',
     ],
 
     /*

@@ -6,7 +6,7 @@
   clipped
 >
   <v-toolbar flat dense>
-    <v-toolbar-title>Menu</v-toolbar-title>
+    <v-toolbar-title>{{ $t('message.menu') }}</v-toolbar-title>
     <v-spacer />
     <v-btn flat icon ml-auto @click.native="$store.dispatch('layout/sidebarToggle')"><v-icon>clear</v-icon></v-btn>
   </v-toolbar>
@@ -26,7 +26,7 @@
         <v-icon>home</v-icon>
       </v-list-tile-action>
       <v-list-tile-content>
-        {{ $t('home') }}
+        {{ $t('message.home') }}
       </v-list-tile-content>
     </v-list-tile>
   </v-list>
