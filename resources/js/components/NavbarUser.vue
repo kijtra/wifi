@@ -39,7 +39,7 @@
 
     <v-card-actions>
       <v-spacer></v-spacer>
-      <v-btn flat icon @click="menu=false"><v-icon>cancel</v-icon></v-btn>
+      <v-btn @click="menu=false"><v-icon>clear</v-icon>{{ $t('message.close') }}</v-btn>
     </v-card-actions>
   </v-card>
 </v-menu>

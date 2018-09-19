@@ -41,19 +41,8 @@ export default {
     appName: 'global/appName'
   }),
 
-  // data() {
-  //   return {
-  //     appName: window.config.appName
-  //   }
-  // },
-
   mounted () {
     this.$loading = this.$refs.loading
-
-    // this.appName = window.config.appName[this.$i18n.locale]
-    // if (!this.appName) {
-    //   this.appName = window.config.appName.en
-    // }
   },
 }
 </script>

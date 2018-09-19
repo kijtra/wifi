@@ -5,7 +5,8 @@ export default {
             "home": "Home",
             "logout": "Log Out",
             "languages": "Language",
-            "menu": "Menu"
+            "menu": "Menu",
+            "close": "Close"
         }
     },
     "ja": {
@@ -14,7 +15,8 @@ export default {
             "home": "ホーム",
             "logout": "ログアウト",
             "languages": "表示言語",
-            "menu": "メニュー"
+            "menu": "メニュー",
+            "close": "閉じる"
         }
     }
 }

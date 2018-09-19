@@ -6,4 +6,5 @@ return [
     'logout' => 'ログアウト',
     'languages' => '表示言語',
     'menu' => 'メニュー',
+    'close' => '閉じる',
 ];

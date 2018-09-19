@@ -6,4 +6,5 @@ return [
     'logout' => 'Log Out',
     'languages' => 'Language',
     'menu' => 'Menu',
+    'close' => 'Close',
 ];
