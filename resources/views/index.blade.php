@@ -1,6 +1,21 @@
 @php
 $config = config('javascript');
+
+$config['appName'] = __(env('APP_NAME'));
+
+$config['locale'] = \LaravelLocalization::getCurrentLocale();
+$config['locales'] = collect(\LaravelLocalization::getSupportedLocales())
+->map(function ($val, $key) {
+  return [
+    'id' => $key,
+    'name' => $val['native'],
+    'regional' => $val['regional'],
+    'url' => \LaravelLocalization::getLocalizedURL($key),
+  ];
+});
+
 $config['mapDefaultPosition'] = collect(config('geoip.default_location'))->only('lat', 'lon');
+
 $config['geoip'] = geoip()->getLocation()->toArray();
 
 $polyfills = [
@@ -26,7 +41,7 @@ $polyfills = [
   <link rel="stylesheet" href="{{ mix('css/app.css').(!app()->isLocal() ?: '?'.time()) }}">
 </head>
 <body>
-  <div id="app"></div>
+  <div id="app" v-cloak></div>
 
   {{-- Global configuration object --}}
   <script>window.config=@json($config);</script>

@@ -5,6 +5,7 @@
     :label="$t('message.languages')"
     prepend-icon="translate"
     single-line
+    @change="select($event)"
   ></v-select>
 </template>
 
@@ -27,31 +28,20 @@ export default {
     locales: 'global/locales'
   }),
 
-  watch: {
-    lang(to, from) {
-      if (from && to) {
-        this.setLocale(to)
-      }
-    }
-  },
-
   created() {
     this.lang = this.locale
-    Object.keys(this.locales).forEach(key => {
+    Object.values(this.locales).forEach(val => {
       this.langs.push({
-        value: key,
-        text: this.locales[key],
+        value: val.id,
+        text: val.name,
       })
     })
   },
 
   methods: {
-    setLocale (locale) {
-      if (this.$i18n.locale !== locale) {
-        this.$store.dispatch('global/setLocale', { locale })
-        // loadMessages(locale)
-      }
-    }
+    select(locale) {
+      window.location.href = window.config.locales[locale].url
+    },
   }
 }
 </script>

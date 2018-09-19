@@ -2,7 +2,7 @@
 <v-toolbar app dense clipped-left flat>
   <v-toolbar-side-icon @click.native="$store.dispatch('layout/sidebarToggle')" />
 
-  <router-link :to="{name:'home'}" class="title">{{$t('message.app_name')}}</router-link>
+  <router-link :to="{name:'home'}" class="title">{{appName}}</router-link>
 
   <v-spacer></v-spacer>
 
@@ -21,6 +21,7 @@ export default {
   },
 
   computed: mapGetters({
+    appName: 'translate/appName',
     user: 'auth/user',
   }),
 }

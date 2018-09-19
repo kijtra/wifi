@@ -38,7 +38,7 @@ export default {
   },
 
   computed: mapGetters({
-    appName: 'global/appName'
+    appName: 'translate/appName'
   }),
 
   mounted () {
