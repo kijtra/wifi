@@ -15,8 +15,7 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 Route::group([
     'prefix' => LaravelLocalization::setLocale(),
     'middleware' => [ 'localeSessionRedirect', 'localizationRedirect' ]
-], function()
-{
+], function () {
     Route::get('/{path?}', function () {
         return view('index');
     })->where('path', '(.*)');

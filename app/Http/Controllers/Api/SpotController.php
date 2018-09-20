@@ -44,8 +44,7 @@ class SpotController extends Controller
         }
 
         if (($ne = $request->input('ne')) && ($sw = $request->input('sw'))) {
-            if (
-                preg_match('/\A\-?\d{2}\.\d+,\-?\d{3}\.\d+\z/', $ne)
+            if (preg_match('/\A\-?\d{2}\.\d+,\-?\d{3}\.\d+\z/', $ne)
                 && preg_match('/\A\-?\d{2}\.\d+,\-?\d{3}\.\d+\z/', $sw)
             ) {
                 list($nelat, $nelng, $swlat, $swlng) = explode(',', $ne.','.$sw);
@@ -61,8 +60,7 @@ class SpotController extends Controller
                 $query->intersects('point', $bounds);
             }
 
-            if (
-                ($val = $request->input('center'))
+            if (($val = $request->input('center'))
                 && preg_match('/\A\-?\d{2}\.\d+,\-?\d{3}\.\d+\z/', $val)
             ) {
                 list($lat, $lng) = explode(',', $val);

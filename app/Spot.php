@@ -80,15 +80,13 @@ class Spot extends Model
                 return $m[1].'-'.$m[3].'-'.$m[4];
             },
             '/\A0(\d{1})(\d{1})(\d{1})\d+/' => function ($m) {
-                if (
-                    (1 == $m[1] && 1 == $m[2])
+                if ((1 == $m[1] && 1 == $m[2])
                     || (4 == $m[1] && 2 == $m[2])
                     || (7 == $m[1] && 2 == $m[2])
                     || (8 == $m[1] && 2 == $m[2])
                 ) {
                     return preg_replace('/\A(\d{3})(\d{3})(\d{4})/', '$1-$2-$3', $m[0]);
-                } elseif (
-                    (3 == $m[1])
+                } elseif ((3 == $m[1])
                     || (6 == $m[1])
                 ) {
                     return preg_replace('/\A(\d{2})(\d{4})(\d{4})/', '$1-$2-$3', $m[0]);
@@ -137,7 +135,7 @@ class Spot extends Model
         ];
 
         $terms = (is_array($term) ? $term : [$term]);
-        $query->where(function ($query) use($map, $terms) {
+        $query->where(function ($query) use ($map, $terms) {
             foreach ($terms as $lang) {
                 if (!empty($map[$lang])) {
                     $query->orWhere('langs', 'like', '%'.$map[$lang].'%');
@@ -200,17 +198,17 @@ class Spot extends Model
 
         $words = explode(' ', $term);
 
-        foreach($words as $key => $word) {
+        foreach ($words as $key => $word) {
             /*
              * applying + operator (required word) only big words
              * because smaller ones are not indexed by mysql
              */
-            if(strlen($word) >= 3) {
+            if (strlen($word) >= 3) {
                 $words[$key] = '+' . $word . '*';
             }
         }
 
-        $searchTerm = implode( ' ', $words);
+        $searchTerm = implode(' ', $words);
 
         return $searchTerm;
     }
