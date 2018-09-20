@@ -8,14 +8,9 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
-.navbar-laravel {
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
-}
-
 [v-cloak] {
-  display:none;
+  display: none;
 }
 
-@import "./components/sidebar";
-@import "./components/map/index";
+@import './components/sidebar';
+@import './components/map/index';
